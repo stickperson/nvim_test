@@ -32,7 +32,7 @@ return {
       ---@type lspconfig.options
       servers = {
         bashls = {},
-				diagnosticls = {},
+        diagnosticls = {},
         dockerls = {},
         jedi_language_server = {},
         jsonls = {},
@@ -50,6 +50,7 @@ return {
               completion = {
                 callSnippet = "Replace",
               },
+              telemetry = { enable = false },
             },
           },
         },

@@ -11,4 +11,3 @@ function M.on_attach(on_attach)
 end
 
 return M
-

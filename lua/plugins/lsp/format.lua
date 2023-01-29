@@ -44,4 +44,3 @@ function M.on_attach(client, buf)
 end
 
 return M
-

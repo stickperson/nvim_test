@@ -75,4 +75,3 @@ function M.diagnostic_goto(next, severity)
 end
 
 return M
-
