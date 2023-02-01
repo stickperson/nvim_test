@@ -167,7 +167,6 @@ return {
       }
     end,
     config = function(_, opts)
-      print("mini")
       local ai = require("mini.ai")
       ai.setup(opts)
     end,
