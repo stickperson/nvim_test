@@ -162,6 +162,7 @@ return {
         "flake8",
         "gopls",
         "hadolint",
+        "markdownlint",
         "mypy",
         "shellcheck",
         "shfmt",
