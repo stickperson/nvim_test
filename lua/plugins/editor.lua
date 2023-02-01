@@ -155,7 +155,7 @@ return {
       { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       { "<leader>fw", "<cmd>Telescope live_grep <cr>", desc = "Find in Files (Grep)" },
       { "<leader>gs", "<cmd>Telescope grep_string<CR>", desc = "Grep string" },
-      { "<leader>td", "<cmd>Telescope terraform_doc<CR>", desc = "Terraform doc" },
+      { "<leader>td", "<cmd>Telescope terraform_doc full_name=hashicorp/aws<CR>", desc = "Terraform doc" },
       { "<leader>tk", "<cmd>Telescope keymaps<CR>", desc = "Telescope keymaps" },
 
       -- search
@@ -369,15 +369,15 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         callback = function()
           local buffer = vim.api.nvim_get_current_buf()
-          pcall(vim.keymap.del, "n", "]]", { buffer = buffer })
-          pcall(vim.keymap.del, "n", "[[", { buffer = buffer })
+          -- pcall(vim.keymap.del, "n", "]]", { buffer = buffer })
+          -- pcall(vim.keymap.del, "n", "[[", { buffer = buffer })
         end,
       })
     end,
     -- stylua: ignore
     keys = {
-      { "]]", function() require("illuminate").goto_next_reference(false) end, desc = "Next Reference", },
-      { "[[", function() require("illuminate").goto_prev_reference(false) end, desc = "Prev Reference" },
+      -- { "]]", function() require("illuminate").goto_next_reference(false) end, desc = "Next Reference", },
+      -- { "[[", function() require("illuminate").goto_prev_reference(false) end, desc = "Prev Reference" },
     },
   },
 

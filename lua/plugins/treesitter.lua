@@ -95,6 +95,7 @@ return {
           goto_previous_start = {
             ["[m"] = "@function.outer",
             ["[["] = "@class.outer",
+            ["[c"] = "@class.outer",
           },
           goto_previous_end = {
             ["[M"] = "@function.outer",

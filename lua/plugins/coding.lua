@@ -138,10 +138,11 @@ return {
   -- better text-objects
   {
     "echasnovski/mini.ai",
-    keys = {
-      { "a", mode = { "x", "o" } },
-      { "i", mode = { "x", "o" } },
-    },
+    -- keys = {
+    --   { "a", mode = { "x", "o" } },
+    --   { "i", mode = { "x", "o" } },
+    -- },
+    event = "VeryLazy",
     dependencies = {
       {
         "nvim-treesitter/nvim-treesitter-textobjects",
@@ -166,6 +167,7 @@ return {
       }
     end,
     config = function(_, opts)
+      print("mini")
       local ai = require("mini.ai")
       ai.setup(opts)
     end,

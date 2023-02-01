@@ -17,4 +17,15 @@ return {
 
   -- makes some plugins dot-repeatable like leap
   { "tpope/vim-repeat", event = "VeryLazy" },
+
+  {
+    "phaazon/mind.nvim",
+    branch = "v2.2",
+    cmd = { "MindOpenMain", "MindClose" },
+    keys = {
+      { "<leader>mo", "<cmd> MindOpenMain <cr>", "open mind" },
+      { "<leader>mc", "<cmd> MindClose <cr>", "close mind" },
+    },
+    config = true,
+  },
 }

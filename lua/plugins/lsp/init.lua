@@ -127,7 +127,7 @@ return {
     opts = function()
       local b = require("null-ls").builtins
       return {
-        debug = false,
+        debug = true,
         sources = {
           -- b.formatting.prettierd,
           b.formatting.markdownlint,
