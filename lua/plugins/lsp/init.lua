@@ -130,7 +130,7 @@ return {
         debug = true,
         sources = {
           -- b.formatting.prettierd,
-          b.formatting.markdownlint,
+          -- b.formatting.markdownlint,
 
           -- Lua
           b.formatting.stylua,
@@ -162,7 +162,7 @@ return {
         "flake8",
         "gopls",
         "hadolint",
-        "markdownlint",
+        -- "markdownlint",
         "mypy",
         "shellcheck",
         "shfmt",
