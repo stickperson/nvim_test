@@ -1,3 +1,9 @@
+local header_art = [[
+ ╭╮╭┬─╮╭─╮┬  ┬┬╭┬╮
+ │││├┤ │ │╰┐┌╯││││
+ ╯╰╯╰─╯╰─╯ ╰╯ ┴┴ ┴
+]]
+
 return {
   {
     "rmehri01/onenord.nvim",
@@ -207,7 +213,7 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    opts = function(plugin)
+    opts = function(_)
       -- local icons = require("lazyvim.config").icons
 
       local function fg(name)
@@ -378,12 +384,16 @@ return {
     },
   },
 
+  -- { "echasnovski/mini.sessions", version = "*" },
+
   -- dashboard
   {
     "echasnovski/mini.starter",
     version = false, -- wait till new 0.7.0 release to put it back on semver
     event = "VimEnter",
+    dependencies = { "echasnovski/mini.sessions" },
     opts = function()
+      require("mini.sessions").setup()
       local logo = table.concat({
         "██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z",
         "██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║      Z",
@@ -402,10 +412,12 @@ return {
       local config = {
         evaluate_single = true,
         header = logo,
+        -- header = header_art,
         items = {
+          starter.sections.sessions(77, true),
           new_section("Find file",    "Telescope find_files", "Telescope"),
           new_section("Recent files", "Telescope oldfiles",   "Telescope"),
-          new_section("Grep text JOE",    "live_grep",  "Telescope"),
+          new_section("Grep text",    "live_grep",  "Telescope"),
           new_section("init.lua",     "e $MYVIMRC",           "Config"),
           new_section("Lazy",         "Lazy",                 "Config"),
           new_section("New file",     "ene | startinsert",    "Built-in"),

@@ -56,3 +56,16 @@ end
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+
+-- Nvim enables plugins written in other languages and loads those languages by default. These can slow down startup time
+-- drastically, so disable them. Only enable if a plugin requires it. See :h provider for more information.
+local default_providers = {
+  "node",
+  "perl",
+  "python3",
+  "ruby",
+}
+
+for _, provider in ipairs(default_providers) do
+  vim.g["loaded_" .. provider .. "_provider"] = 0
+end
