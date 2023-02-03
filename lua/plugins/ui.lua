@@ -226,7 +226,7 @@ return {
 
       return {
         options = {
-          theme = "onenord", -- try auto
+          theme = "auto",
           globalstatus = true,
           disabled_filetypes = { statusline = { "dashboard", "lazy", "starter" } },
         },
@@ -412,7 +412,6 @@ return {
       local config = {
         evaluate_single = true,
         header = logo,
-        -- header = header_art,
         items = {
           starter.sections.sessions(77, true),
           new_section("Find file",    "Telescope find_files", "Telescope"),

@@ -56,7 +56,7 @@ return {
             luasnip.change_choice(1)
           end
         end,
-        mode ={ "i" }, desc = "luasnip select list of options",
+        mode ={"i" }, desc = "luasnip select list of options",
       },
     },
   },
