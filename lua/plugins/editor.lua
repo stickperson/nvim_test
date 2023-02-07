@@ -37,7 +37,7 @@ return {
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     keys = {
       -- toggle
-      { "<C-n>", "<cmd> NvimTreeToggle <CR>", desc = "toggle nvimtree" },
+      { "<leader>e", "<cmd> NvimTreeToggle <CR>", desc = "toggle nvimtree" },
     },
     opts = {
       filters = {
@@ -46,14 +46,13 @@ return {
       },
       disable_netrw = true,
       hijack_netrw = true,
-      open_on_setup = false,
-      ignore_ft_on_setup = { "starter" },
+      -- ignore_ft_on_setup = { "starter" },
       hijack_cursor = true,
-      hijack_unnamed_buffer_when_opening = false,
-      update_cwd = true,
+      hijack_unnamed_buffer_when_opening = true,
+      sync_root_with_cwd = true,
       update_focused_file = {
         enable = true,
-        update_cwd = false,
+        update_root = false,
       },
       view = {
         adaptive_size = true,
@@ -404,5 +403,42 @@ return {
       { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
       { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
     },
+  },
+
+  -- terminal
+  {
+    "akinsho/toggleterm.nvim",
+    cmd = { "ToggleTerm" },
+    keys = {
+      { [[<c-\>]], "<cmd> ToggleTerm <cr>", desc = "toggle terminal" },
+    },
+    opts = {
+      direction = "float",
+      open_mapping = [[<c-\>]],
+      shade_terminals = false,
+    },
+  },
+
+  -- folding
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = { "kevinhwang91/promise-async" },
+    keys = {
+      {
+        "zM",
+        function()
+          require("ufo").closeAllFolds()
+        end,
+        desc = "close all folds",
+      },
+      {
+        "zR",
+        function()
+          require("ufo").openAllFolds()
+        end,
+        desc = "open all folds",
+      },
+    },
+    config = true,
   },
 }
