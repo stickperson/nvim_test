@@ -35,6 +35,7 @@ return {
   {
     "kyazdani42/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+    commit = "8b8d457e07d279976a9baac6bbff5aa036afdc5f",
     keys = {
       -- toggle
       { "<leader>e", "<cmd> NvimTreeToggle <CR>", desc = "toggle nvimtree" },
@@ -440,5 +441,16 @@ return {
       },
     },
     config = true,
+  },
+  {
+    "stevearc/aerial.nvim",
+    keys = {
+      { "<leader>a", "<cmd> AerialToggle <cr>", desc = "aerial toggle" },
+    },
+    opts = {
+      layout = {
+        default_direction = "left",
+      },
+    },
   },
 }

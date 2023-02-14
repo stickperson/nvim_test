@@ -40,7 +40,7 @@ return {
         terraformls = {},
         tflint = {},
         yamlls = {},
-        sumneko_lua = {
+        lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
           settings = {
             Lua = {
@@ -140,7 +140,11 @@ return {
           b.formatting.stylua,
 
           -- Shell
-          b.formatting.shfmt,
+          -- b.formatting.shfmt,
+          b.formatting.shfmt.with({
+            extra_args = { "-i", "2", "-ci" },
+          }),
+          b.formatting.beautysh,
           b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
 
           -- Python
