@@ -127,3 +127,6 @@ map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 
 map("n", "<leader>lt", "<cmd>ToggleListItem<cr>", { desc = "Toggle markdown list" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+
+-- Do not replace yanked text when pasting
+map("v", "p", "P", { noremap = true, silent = true })

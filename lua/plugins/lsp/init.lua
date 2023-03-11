@@ -131,7 +131,7 @@ return {
     opts = function()
       local b = require("null-ls").builtins
       return {
-        debug = true,
+        debug = false,
         sources = {
           -- b.formatting.prettierd,
           -- b.formatting.markdownlint,
@@ -149,7 +149,7 @@ return {
 
           -- Python
           b.diagnostics.flake8,
-          b.diagnostics.mypy,
+          -- b.diagnostics.mypy,
           b.formatting.black,
         },
       }

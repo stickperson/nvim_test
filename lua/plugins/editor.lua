@@ -40,8 +40,13 @@ return {
       { "<leader>e", "<cmd> NvimTreeToggle <CR>", desc = "toggle nvimtree" },
     },
     opts = {
+      live_filter = {
+        prefix = "[FILTER]: ",
+        -- name is weird. this allows you to filter folders
+        always_show_folders = false,
+      },
       filters = {
-        dotfiles = false,
+        -- dotfiles = false,
         exclude = { vim.fn.stdpath("config") .. "/lua/custom" },
       },
       disable_netrw = true,

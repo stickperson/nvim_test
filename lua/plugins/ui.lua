@@ -1,9 +1,3 @@
-local header_art = [[
- ╭╮╭┬─╮╭─╮┬  ┬┬╭┬╮
- │││├┤ │ │╰┐┌╯││││
- ╯╰╯╰─╯╰─╯ ╰╯ ┴┴ ┴
-]]
-
 return {
   {
     "rmehri01/onenord.nvim",
@@ -65,7 +59,7 @@ return {
       -- pick buffers via numbers
       { "<Bslash>", "<cmd> BufferLinePick <CR>", "Pick buffer" },
       {
-        "<leader>x",
+        "<leader>d",
         function()
           require("mini.bufremove").delete(0, false)
         end,
@@ -384,76 +378,40 @@ return {
     },
   },
 
-  -- { "echasnovski/mini.sessions", version = "*" },
-
-  -- dashboard
   {
-    "echasnovski/mini.starter",
-    version = false, -- wait till new 0.7.0 release to put it back on semver
-    event = "VimEnter",
-    dependencies = { "echasnovski/mini.sessions" },
-    opts = function()
-      require("mini.sessions").setup()
-      local logo = table.concat({
-        "██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z",
-        "██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║      Z",
-        "██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║   z",
-        "██║     ██╔══██║ ███╔╝    ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║ z",
-        "███████╗██║  ██║███████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║",
-        "╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝",
-      }, "\n")
-      local pad = string.rep(" ", 22)
-      local new_section = function(name, action, section)
-        return { name = name, action = action, section = pad .. section }
-      end
+    "goolord/alpha-nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      local alpha = require("alpha")
+      local dashboard = require("alpha.themes.dashboard")
+      dashboard.section.header.val = [[
+╭╮╭┬─╮╭─╮┬  ┬┬╭┬╮
+│││├┤ │ │╰┐┌╯││││
+╯╰╯╰─╯╰─╯ ╰╯ ┴┴ ┴
 
-      local starter = require("mini.starter")
-      --stylua: ignore
-      local config = {
-        evaluate_single = true,
-        header = logo,
-        items = {
-          starter.sections.sessions(77, true),
-          new_section("Find file",    "Telescope find_files", "Telescope"),
-          new_section("Recent files", "Telescope oldfiles",   "Telescope"),
-          new_section("Grep text",    "live_grep",  "Telescope"),
-          new_section("init.lua",     "e $MYVIMRC",           "Config"),
-          new_section("Lazy",         "Lazy",                 "Config"),
-          new_section("New file",     "ene | startinsert",    "Built-in"),
-          new_section("Quit",         "qa",                   "Built-in"),
-        },
-        content_hooks = {
-          starter.gen_hook.adding_bullet(pad .. "░ ", false),
-          starter.gen_hook.aligning("center", "center"),
-        },
+   ༼ つ ◕_◕ ༽つ
+
+]]
+
+      dashboard.section.buttons.val = {
+        dashboard.button("f", "  Find file", ":Telescope find_files hidden=true no_ignore=true<CR>"),
+        dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+        dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
+        dashboard.button("u", "  Update plugins", ":Lazy sync<CR>"),
+        dashboard.button("r", "  Recently opened files", "<cmd>Telescope oldfiles<CR>"),
+        dashboard.button("l", "  Open last session", "<cmd>RestoreSession<CR>"),
+        dashboard.button("q", "  Quit", ":qa<CR>"),
       }
-      return config
-    end,
-    config = function(_, config)
-      -- close Lazy and re-open when starter is ready
-      if vim.o.filetype == "lazy" then
-        vim.cmd.close()
-        vim.api.nvim_create_autocmd("User", {
-          pattern = "MiniStarterOpened",
-          callback = function()
-            require("lazy").show()
-          end,
-        })
+      local function footer()
+        local fortune = require("alpha.fortune")
+        local quote = table.concat(fortune(), "\n")
+
+        return quote
       end
+      dashboard.section.footer.val = footer()
+      dashboard.opts.opts.noautocmd = true
 
-      local starter = require("mini.starter")
-      starter.setup(config)
-
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "LazyVimStarted",
-        callback = function()
-          local stats = require("lazy").stats()
-          local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          local pad_footer = string.rep(" ", 8)
-          starter.config.footer = pad_footer .. "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
-          pcall(starter.refresh)
-        end,
-      })
+      alpha.setup(dashboard.opts)
     end,
   },
 
