@@ -135,6 +135,9 @@ return {
         sources = {
           -- b.formatting.prettierd,
           -- b.formatting.markdownlint,
+          -- b.diagnostics.sqlfluff.with({
+          --   extra_args = { "--dialect", "postgres" }, -- change to your dialect
+          -- }),
 
           -- Lua
           b.formatting.stylua,

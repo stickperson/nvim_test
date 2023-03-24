@@ -70,3 +70,6 @@ for _, provider in ipairs(default_providers) do
 end
 
 pcall(require, "work")
+
+-- Do not show the "Write partial file?" prompt when saving with text selected
+vim.cmd([[cabbrev <expr> w getcmdtype()==':' && getcmdline() == "'<,'>w" ? '<c-u>w' : 'w']])
