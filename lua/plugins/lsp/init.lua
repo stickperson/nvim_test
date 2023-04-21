@@ -36,7 +36,6 @@ return {
         dockerls = {},
         jedi_language_server = {},
         jsonls = {},
-        sqls = {},
         terraformls = {},
         tflint = {},
         yamlls = {},
@@ -76,6 +75,7 @@ return {
       require("util").on_attach(function(client, buffer)
         require("plugins.lsp.format").on_attach(client, buffer)
         require("plugins.lsp.keymaps").on_attach(client, buffer)
+        -- require("nvim-navbuddy").attach(client, buffer)
       end)
 
       vim.diagnostic.config(opts.diagnostics)

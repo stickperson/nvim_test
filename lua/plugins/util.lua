@@ -31,6 +31,9 @@ return {
   {
     "nvim-neorg/neorg",
     build = ":Neorg sync-parsers",
+    keys = {
+      { "<leader>ni", "<cmd> Neorg index <cr>", "Neorg index" },
+    },
     opts = {
       load = {
         ["core.defaults"] = {}, -- Loads default behaviour
