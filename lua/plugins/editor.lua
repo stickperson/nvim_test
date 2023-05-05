@@ -1,3 +1,12 @@
+local find_command = {
+  "fd",
+  "--type",
+  "f",
+  "--hidden",
+  "--follow",
+  "--exclude",
+  "{.git,node_modules}",
+}
 return {
   --
   {
@@ -226,6 +235,7 @@ return {
         vimgrep_arguments = {
           "rg",
           "-L",
+          "--hidden",
           "--color=never",
           "--no-heading",
           "--with-filename",
@@ -272,6 +282,9 @@ return {
         },
       },
       pickers = {
+        find_files = {
+          find_command = find_command,
+        },
         help_tags = {
           mappings = {
             i = {
