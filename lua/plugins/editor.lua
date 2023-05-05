@@ -138,16 +138,13 @@ return {
     dependencies = {
       {
         "ANGkeith/telescope-terraform-doc.nvim",
-        config = function()
-          require("telescope").load_extension("terraform_doc")
-        end,
+      },
+      {
+        "aaronhallaert/advanced-git-search.nvim",
       },
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
-        config = function()
-          require("telescope").load_extension("fzf")
-        end,
       },
     },
     keys = {
@@ -217,6 +214,13 @@ return {
       },
     },
     opts = {
+      extensions = {
+        advanced_git_search = {
+          git_flags = {
+            -- "--no-pager",
+          },
+        },
+      },
       defaults = {
         vimgrep_arguments = {
           "rg",
@@ -279,6 +283,12 @@ return {
         },
       },
     },
+    config = function(_, opts)
+      require("telescope").setup(opts)
+      require("telescope").load_extension("advanced_git_search")
+      require("telescope").load_extension("terraform_doc")
+      require("telescope").load_extension("fzf")
+    end,
   },
 
   -- easily jump to any location and enhanced f/t motions for Leap
