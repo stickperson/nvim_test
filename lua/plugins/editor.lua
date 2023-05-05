@@ -373,6 +373,10 @@ return {
       end,
     },
   },
+  {
+    "ruifm/gitlinker.nvim",
+    config = true,
+  },
 
   -- references
   {
