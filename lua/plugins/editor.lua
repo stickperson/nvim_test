@@ -217,7 +217,8 @@ return {
       extensions = {
         advanced_git_search = {
           git_flags = {
-            -- "--no-pager",
+            "-c",
+            "delta.side-by-side=false",
           },
         },
       },
