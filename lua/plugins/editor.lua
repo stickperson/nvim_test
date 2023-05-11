@@ -225,6 +225,7 @@ return {
     opts = {
       extensions = {
         advanced_git_search = {
+          diff_plugin = "diffview",
           git_flags = {
             "-c",
             "delta.side-by-side=false",
