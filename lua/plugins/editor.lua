@@ -222,82 +222,88 @@ return {
         desc = "Live grep in directory selected in nvim-tree",
       },
     },
-    opts = {
-      extensions = {
-        advanced_git_search = {
-          diff_plugin = "diffview",
-          git_flags = {
-            "-c",
-            "delta.side-by-side=false",
+    opts = function()
+      local actions = require("telescope.actions")
+      return {
+        extensions = {
+          advanced_git_search = {
+            diff_plugin = "diffview",
+            git_flags = {
+              "-c",
+              "delta.side-by-side=false",
+            },
           },
         },
-      },
-      defaults = {
-        vimgrep_arguments = {
-          "rg",
-          "-L",
-          "--hidden",
-          "--color=never",
-          "--no-heading",
-          "--with-filename",
-          "--line-number",
-          "--column",
-          "--smart-case",
-        },
-        prompt_prefix = " ",
-        selection_caret = " ",
-        sorting_strategy = "ascending",
-        layout_strategy = "horizontal",
-        layout_config = {
-          horizontal = {
-            prompt_position = "top",
-            preview_width = 0.55,
-            results_width = 0.8,
+        defaults = {
+          vimgrep_arguments = {
+            "rg",
+            "-L",
+            "--hidden",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
           },
-          vertical = {
-            mirror = false,
+          prompt_prefix = " ",
+          selection_caret = " ",
+          sorting_strategy = "ascending",
+          layout_strategy = "horizontal",
+          layout_config = {
+            horizontal = {
+              prompt_position = "top",
+              preview_width = 0.55,
+              results_width = 0.8,
+            },
+            vertical = {
+              mirror = false,
+            },
+            width = 0.87,
+            height = 0.80,
+            preview_cutoff = 120,
           },
-          width = 0.87,
-          height = 0.80,
-          preview_cutoff = 120,
-        },
-        file_ignore_patterns = { "node_modules" },
-        border = {},
-        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-        set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-        -- Developer configurations: Not meant for general override
-        -- buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
-        mappings = {
-          i = {
-            ["<c-t>"] = function(...)
-              return require("trouble.providers.telescope").open_with_trouble(...)
-            end,
-            ["<C-Down>"] = function(...)
-              return require("telescope.actions").cycle_history_next(...)
-            end,
-            ["<C-Up>"] = function(...)
-              return require("telescope.actions").cycle_history_prev(...)
-            end,
-          },
-          -- n = { ["q"] = require("telescope.actions").close },
-        },
-      },
-      pickers = {
-        find_files = {
-          find_command = find_command,
-        },
-        help_tags = {
+          file_ignore_patterns = { "node_modules" },
+          border = {},
+          borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+          set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+          -- Developer configurations: Not meant for general override
+          -- buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
           mappings = {
             i = {
-              ["<CR>"] = "select_vertical",
+              ["<c-t>"] = function(...)
+                return require("trouble.providers.telescope").open_with_trouble(...)
+              end,
+              ["<C-Down>"] = function(...)
+                return require("telescope.actions").cycle_history_next(...)
+              end,
+              ["<C-Up>"] = function(...)
+                return require("telescope.actions").cycle_history_prev(...)
+              end,
+              ["<C-f>"] = actions.send_to_qflist + actions.open_qflist,
             },
             n = {
-              ["<CR>"] = "select_vertical",
+              ["<C-f>"] = actions.send_to_qflist + actions.open_qflist,
             },
           },
         },
-      },
-    },
+        pickers = {
+          find_files = {
+            find_command = find_command,
+          },
+          help_tags = {
+            mappings = {
+              i = {
+                ["<CR>"] = "select_vertical",
+              },
+              n = {
+                ["<CR>"] = "select_vertical",
+              },
+            },
+          },
+        },
+      }
+    end,
     config = function(_, opts)
       require("telescope").setup(opts)
       require("telescope").load_extension("advanced_git_search")
@@ -473,7 +479,11 @@ return {
         desc = "open all folds",
       },
     },
-    config = true,
+    config = {
+      provider_selector = function(bufnr, filetype, buftype)
+        return { "treesitter", "indent" }
+      end,
+    },
   },
   {
     "stevearc/aerial.nvim",

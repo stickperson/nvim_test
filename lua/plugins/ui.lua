@@ -402,13 +402,6 @@ return {
         dashboard.button("l", "  Open last session", "<cmd>RestoreSession<CR>"),
         dashboard.button("q", "  Quit", ":qa<CR>"),
       }
-      local function footer()
-        local fortune = require("alpha.fortune")
-        local quote = table.concat(fortune(), "\n")
-
-        return quote
-      end
-      dashboard.section.footer.val = footer()
       dashboard.opts.opts.noautocmd = true
 
       alpha.setup(dashboard.opts)
