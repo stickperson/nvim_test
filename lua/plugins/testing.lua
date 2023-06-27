@@ -3,6 +3,10 @@ return {
     "folke/edgy.nvim",
     -- event = "VeryLazy",
     opts = {
+      animate = {
+        enabled = false,
+      },
+      exit_when_last = true,
       bottom = {
         -- toggleterm / lazyterm at the bottom with a height of 40% of the screen
         { ft = "toggleterm", size = { height = 0.25 } },
@@ -29,37 +33,16 @@ return {
       left = {
         -- Neo-tree filesystem always takes half the screen height
         {
-          title = "Neo-Tree",
-          ft = "neo-tree",
-          filter = function(buf)
-            return vim.b[buf].neo_tree_source == "filesystem"
-          end,
+          title = "NvimTree",
+          ft = "NvimTree",
           size = { height = 0.5 },
         },
         {
-          ft = "Outline",
-          pinned = true,
-          open = "SymbolsOutline",
-        },
-        {
           ft = "aerial",
-          -- pinned = true,
-          -- open = "SymbolsOutline",
+          pinned = true,
+          open = "AerialNavToggle",
         },
       },
-    },
-  },
-  {
-    "simrat39/symbols-outline.nvim",
-    config = true,
-  },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
     },
   },
 }
