@@ -133,6 +133,7 @@ return {
   -- search/replace in multiple files
   {
     "windwp/nvim-spectre",
+    config = true,
     -- stylua: ignore
     keys = {
       { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
@@ -221,6 +222,8 @@ return {
         end,
         desc = "Live grep in directory selected in nvim-tree",
       },
+      -- other
+      { "<leader>tc", "<cmd>Telescope colorscheme<cr>", desc = "Change colorscheme" },
     },
     opts = function()
       local actions = require("telescope.actions")
@@ -290,6 +293,9 @@ return {
         pickers = {
           find_files = {
             find_command = find_command,
+          },
+          colorscheme = {
+            enable_preview = true,
           },
           help_tags = {
             mappings = {
@@ -383,6 +389,8 @@ return {
         end
 
         -- stylua: ignore start
+        map("n", "ghn", gs.next_hunk, "Next Hunk")
+        map("n", "ghp", gs.prev_hunk, "Prev Hunk")
         map("n", "]h", gs.next_hunk, "Next Hunk")
         map("n", "[h", gs.prev_hunk, "Prev Hunk")
         map({ "n", "v" }, "<leader>rh", ":Gitsigns reset_hunk<CR>", "Reset Hunk")

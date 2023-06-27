@@ -3,11 +3,16 @@ return {
     "rmehri01/onenord.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-      require("onenord").setup({
-        fade_nc = true,
-      })
-    end,
+    opts = {
+      fade_nc = true,
+    },
+  },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
   },
   {
     "rcarriga/nvim-notify",

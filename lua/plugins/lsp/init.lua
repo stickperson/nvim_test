@@ -38,7 +38,13 @@ return {
         jsonls = {},
         terraformls = {},
         tflint = {},
-        yamlls = {},
+        yamlls = {
+          settings = {
+            yaml = {
+              keyOrdering = false,
+            },
+          },
+        },
         lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
           settings = {
@@ -152,7 +158,7 @@ return {
 
           -- Python
           b.diagnostics.flake8,
-          -- b.diagnostics.mypy,
+          b.diagnostics.mypy,
           b.formatting.black,
         },
       }
