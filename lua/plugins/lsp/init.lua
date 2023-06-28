@@ -4,6 +4,17 @@ return {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
     dependencies = {
+      {
+        "SmiteshP/nvim-navbuddy",
+        dependencies = {
+          "SmiteshP/nvim-navic",
+          "MunifTanjim/nui.nvim",
+        },
+        opts = { lsp = { auto_attach = true } },
+        keys = {
+          { "<leader>nb", "<cmd>Navbuddy<cr>", desc = "Navbuddy" },
+        },
+      },
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
       "mason.nvim",

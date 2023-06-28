@@ -494,41 +494,12 @@ return {
     },
   },
   {
-    "stevearc/aerial.nvim",
-    keys = {
-      { "<leader>at", "<cmd> AerialToggle <cr>", desc = "aerial toggle" },
-    },
-    opts = {
-      layout = {
-        default_direction = "left",
-      },
-      autojump = true,
-    },
-  },
-  {
-    "SmiteshP/nvim-navbuddy",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-      "SmiteshP/nvim-navic",
-      "MunifTanjim/nui.nvim",
-    },
-    cmd = "Navbuddy",
-    keys = {
-      {
-        "<leader>nb",
-        function()
-          require("nvim-navbuddy").open()
-        end,
-        desc = "navbuddy",
-      },
-    },
-    opts = {
-      lsp = {
-        auto_attach = true,
-      },
-    },
-  },
-  {
     "sindrets/diffview.nvim",
+  },
+  {
+    "glepnir/lspsaga.nvim",
+    event = "LspAttach",
+    dependencies = { { "nvim-tree/nvim-web-devicons" } },
+    config = true,
   },
 }

@@ -20,14 +20,6 @@ return {
         },
         "Trouble",
         { ft = "qf", title = "QuickFix" },
-        {
-          ft = "help",
-          size = { height = 20 },
-          -- only show help buffers
-          filter = function(buf)
-            return vim.bo[buf].buftype == "help"
-          end,
-        },
         { ft = "spectre_panel", size = { height = 0.4 } },
       },
       left = {
@@ -36,11 +28,6 @@ return {
           title = "NvimTree",
           ft = "NvimTree",
           size = { height = 0.5 },
-        },
-        {
-          ft = "aerial",
-          pinned = true,
-          open = "AerialNavToggle",
         },
       },
     },
