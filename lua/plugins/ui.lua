@@ -10,7 +10,7 @@ return {
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     "folke/tokyonight.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     opts = {},
   },
@@ -386,6 +386,7 @@ return {
   {
     "goolord/alpha-nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    event = "VimEnter",
     config = function()
       local alpha = require("alpha")
       local dashboard = require("alpha.themes.dashboard")

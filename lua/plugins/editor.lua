@@ -488,6 +488,7 @@ return {
       },
     },
     config = {
+      ---@diagnostic disable-next-line: unused-local
       provider_selector = function(bufnr, filetype, buftype)
         return { "treesitter", "indent" }
       end,
