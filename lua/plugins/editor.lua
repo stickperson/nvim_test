@@ -317,21 +317,59 @@ return {
       require("telescope").load_extension("fzf")
     end,
   },
-
-  -- easily jump to any location and enhanced f/t motions for Leap
   {
-    "ggandor/leap.nvim",
+    "folke/flash.nvim",
     event = "VeryLazy",
-    dependencies = { { "ggandor/flit.nvim", opts = { labeled_modes = "nv" } } },
-    config = function(_, opts)
-      local leap = require("leap")
-      for k, v in pairs(opts) do
-        leap.opts[k] = v
-      end
-      leap.add_default_mappings(true)
-    end,
+    opts = {},
+    keys = {
+      {
+        "s",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump({
+            search = {
+              mode = function(str)
+                return "\\<" .. str
+              end,
+            },
+          })
+        end,
+        desc = "Flash",
+      },
+      {
+        "S",
+        mode = { "n", "o", "x" },
+        function()
+          require("flash").treesitter()
+        end,
+        desc = "Flash Treesitter",
+      },
+      {
+        "r",
+        mode = "o",
+        function()
+          require("flash").remote()
+        end,
+        desc = "Remote Flash",
+      },
+      {
+        "R",
+        mode = { "o", "x" },
+        function()
+          require("flash").treesitter_search()
+        end,
+        desc = "Flash Treesitter Search",
+      },
+      {
+        "<c-s>",
+        mode = { "c" },
+        function()
+          require("flash").toggle()
+        end,
+        desc = "Toggle Flash Search",
+      },
+    },
   },
-
   -- which-key
   {
     "folke/which-key.nvim",
@@ -404,6 +442,7 @@ return {
   {
     "ruifm/gitlinker.nvim",
     config = true,
+    lazy = false,
   },
 
   -- references
