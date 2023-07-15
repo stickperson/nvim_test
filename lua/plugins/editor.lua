@@ -540,6 +540,15 @@ return {
     "glepnir/lspsaga.nvim",
     event = "LspAttach",
     dependencies = { { "nvim-tree/nvim-web-devicons" } },
-    config = true,
+    opts = {
+      -- Disable code action lightbulb
+      lightbulb = {
+        enable = false,
+      },
+      outline = {
+        win_position = "left",
+      },
+    },
+    -- config = true,
   },
 }
