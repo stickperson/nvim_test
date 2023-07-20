@@ -509,6 +509,7 @@ return {
   -- folding
   {
     "kevinhwang91/nvim-ufo",
+    lazy = "VeryLazy",
     dependencies = { "kevinhwang91/promise-async" },
     keys = {
       {
