@@ -320,7 +320,14 @@ return {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    opts = {},
+    opts = {
+      modes = {
+        search = {
+          -- disable when doing normal (e.g. /) searches
+          enabled = false,
+        },
+      },
+    },
     keys = {
       {
         "s",

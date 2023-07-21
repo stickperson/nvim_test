@@ -85,11 +85,6 @@ return {
           icon = "|", -- this should be omitted if indicator style is not 'icon'
           style = "icon", -- can also be 'underline'|'none',
         },
-        buffer_close_icon = "",
-        modified_icon = "●",
-        close_icon = "",
-        left_trunc_marker = "",
-        right_trunc_marker = "",
         max_name_length = 30,
         max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
         tab_size = 21,
