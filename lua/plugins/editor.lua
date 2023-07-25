@@ -418,14 +418,6 @@ return {
     opts = {
       numhl = true,
       current_line_blame = true,
-      signs = {
-        add = { text = "▎" },
-        change = { text = "▎" },
-        delete = { text = "契" },
-        topdelete = { text = "契" },
-        changedelete = { text = "▎" },
-        untracked = { text = "▎" },
-      },
       on_attach = function(buffer)
         local gs = package.loaded.gitsigns
 
