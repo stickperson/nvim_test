@@ -151,6 +151,11 @@ return {
       },
       {
         "aaronhallaert/advanced-git-search.nvim",
+        dependencies = {
+          {
+            "sindrets/diffview.nvim",
+          },
+        },
       },
       {
         "nvim-telescope/telescope-fzf-native.nvim",
@@ -532,9 +537,6 @@ return {
         return { "treesitter", "indent" }
       end,
     },
-  },
-  {
-    "sindrets/diffview.nvim",
   },
   {
     "glepnir/lspsaga.nvim",
