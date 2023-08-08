@@ -4,6 +4,9 @@ return {
     version = false, -- last release is way too old and doesn't work on Windows
     build = ":TSUpdate",
     event = "BufReadPost",
+    dependencies = {
+      { "nvim-treesitter/nvim-treesitter-textobjects" },
+    },
     keys = {
       { "<c-space>", desc = "Increment selection" },
       { "<bs>", desc = "Schrink selection", mode = "x" },
@@ -121,6 +124,5 @@ return {
       require("nvim-treesitter.configs").setup(opts)
     end,
   },
-  { "nvim-treesitter/nvim-treesitter-textobjects" },
   { "nvim-treesitter/playground" },
 }
