@@ -7,11 +7,11 @@ return {
       fade_nc = true,
     },
   },
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1002, lazy = false },
   {
     "folke/tokyonight.nvim",
-    lazy = true,
-    priority = 1000,
+    lazy = false,
+    priority = 1001,
     opts = {},
   },
   {

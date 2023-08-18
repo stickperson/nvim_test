@@ -161,6 +161,9 @@ return {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
       },
+      {
+        "sindrets/diffview.nvim",
+      },
     },
     keys = {
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
@@ -171,6 +174,7 @@ return {
       { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       { "<leader>fw", "<cmd>Telescope live_grep <cr>", desc = "Find in Files (Grep)" },
       { "<leader>gs", "<cmd>Telescope grep_string<CR>", desc = "Grep string" },
+      { "<leader>tb", "<cmd>Telescope buffers<CR>", desc = "Terraform buffers" },
       { "<leader>td", "<cmd>Telescope terraform_doc full_name=hashicorp/aws<CR>", desc = "Terraform doc" },
       { "<leader>tk", "<cmd>Telescope keymaps<CR>", desc = "Telescope keymaps" },
 

@@ -73,3 +73,6 @@ pcall(require, "work")
 
 -- Do not show the "Write partial file?" prompt when saving with text selected
 vim.cmd([[cabbrev <expr> w getcmdtype()==':' && getcmdline() == "'<,'>w" ? '<c-u>w' : 'w']])
+
+-- Disable lsp logging
+vim.lsp.set_log_level("info")
