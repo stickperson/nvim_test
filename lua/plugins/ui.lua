@@ -2,12 +2,24 @@ return {
   {
     "rmehri01/onenord.nvim",
     lazy = false,
-    priority = 1000,
+    priority = 1001,
     opts = {
       fade_nc = true,
     },
   },
   { "catppuccin/nvim", name = "catppuccin", priority = 1002, lazy = false },
+  -- {
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   priority = 1000,
+  --   lazy = false,
+  --   config = function()
+  --     vim.cmd([[colorscheme catppuccin-frappe]])
+  --   end,
+  --   opts = {
+  --     flavour = "frappe",
+  --   },
+  -- },
   {
     "folke/tokyonight.nvim",
     lazy = false,
@@ -366,6 +378,21 @@ return {
         command_palette = true,
         long_message_to_split = true,
       },
+      routes = {
+        {
+          filter = {
+            event = "msg_show",
+            any = {
+              { find = "%d+L, %d+B" },
+              { find = "; after #%d+" },
+              { find = "; before #%d+" },
+              { find = "%d fewer lines" },
+              { find = "%d more lines" },
+            },
+          },
+          opts = { skip = true },
+        },
+      },
     },
     -- stylua: ignore
     keys = {
@@ -436,5 +463,10 @@ return {
     ft = "markdown",
     config = true,
     cmd = { "Glow" },
+  },
+  {
+    "ivanjermakov/troublesum.nvim",
+    config = true,
+    event = "VeryLazy",
   },
 }
