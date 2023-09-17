@@ -57,6 +57,10 @@ return {
 
           keymaps = {
             -- You can use the capture groups defined in textobjects.scm
+            ["aa"] = "@assignment.outer",
+            ["ia"] = "@assignment.inner",
+            ["la"] = "@assignment.lhs",
+            ["ra"] = "@assignment.rhs",
             ["as"] = "@statement.outer",
             ["ab"] = "@block.outer",
             ["ib"] = "@block.inner",
@@ -64,6 +68,8 @@ return {
             ["if"] = "@function.inner",
             ["ac"] = "@class.outer",
             ["at"] = "@comment.outer",
+            ["ap"] = "@parameter.outer",
+            ["ip"] = "@parameter.inner",
             -- You can optionally set descriptions to the mappings (used in the desc parameter of
             -- nvim_buf_set_keymap) which plugins like which-key display
             ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
