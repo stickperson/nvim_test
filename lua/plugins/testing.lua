@@ -1,9 +1,11 @@
 return {
   {
-    "simrat39/symbols-outline.nvim",
+    "stickperson/symbols-outline.nvim",
+    branch = "autojump",
     opts = {
+      auto_jump = true,
       autofold_depth = 0,
     },
-    lazy = false,
+    event = "BufReadPost",
   },
 }
