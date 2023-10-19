@@ -13,29 +13,30 @@ return {
   --
   {
     "ThePrimeagen/harpoon",
+    event = "BufReadPost",
     keys = {
       {
         "<leader>hc",
         function()
           require("harpoon.mark").clear_all()
         end,
-        desc = "Clear all marks",
+        desc = "Harpoon clear all marks",
       },
       {
         "<leader>hd",
         function()
           require("harpoon.mark").rm_file()
         end,
-        desc = "Remove file",
+        desc = "Harpoon remove file",
       },
       {
         "<leader>hm",
         function()
           require("harpoon.mark").add_file()
         end,
-        desc = "Add file",
+        desc = "Harpoon mark",
       },
-      { "<leader>hv", "<cmd> Telescope harpoon marks <CR>", desc = "Toggle quick menu" },
+      { "<leader>hv", "<cmd> Telescope harpoon marks <CR>", desc = "Harpoon toggle quick menu" },
     },
     config = function()
       require("telescope").load_extension("harpoon")
