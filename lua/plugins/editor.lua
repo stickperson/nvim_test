@@ -36,7 +36,13 @@ return {
         end,
         desc = "Harpoon mark",
       },
-      { "<leader>hv", "<cmd> Telescope harpoon marks <CR>", desc = "Harpoon toggle quick menu" },
+      {
+        "<leader>hv",
+        function()
+          require("harpoon.ui").toggle_quick_menu()
+        end,
+        desc = "Harpoon toggle quick menu",
+      },
     },
     config = function()
       require("telescope").load_extension("harpoon")

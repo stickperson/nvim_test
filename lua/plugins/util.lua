@@ -36,7 +36,19 @@ return {
     },
     opts = {
       load = {
-        ["core.defaults"] = {}, -- Loads default behaviour
+        ["core.export"] = {},
+        ["core.qol.todo_items"] = {
+          config = {
+            create_todo_items = true,
+            create_todo_parents = true,
+          },
+        },
+        ["core.completion"] = {
+          config = {
+            engine = "nvim-cmp",
+          },
+        },
+        ["core.defaults"] = {},
         ["core.concealer"] = {
           config = {
             icon_preset = "diamond",
