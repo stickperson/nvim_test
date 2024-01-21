@@ -16,6 +16,9 @@ return {
           close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
         },
       },
+      suppress_missing_scope = {
+        projects_v2 = true,
+      },
     },
   },
   {
