@@ -75,4 +75,4 @@ pcall(require, "work")
 vim.cmd([[cabbrev <expr> w getcmdtype()==':' && getcmdline() == "'<,'>w" ? '<c-u>w' : 'w']])
 
 -- Disable lsp logging
-vim.lsp.set_log_level("info")
+vim.lsp.set_log_level("WARN")
