@@ -1,27 +1,15 @@
 return {
-  -- lspconfig
   {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
     dependencies = {
-      {
-        "SmiteshP/nvim-navbuddy",
-        dependencies = {
-          "SmiteshP/nvim-navic",
-          "MunifTanjim/nui.nvim",
-        },
-        opts = { lsp = { auto_attach = true } },
-        keys = {
-          { "<leader>nb", "<cmd>Navbuddy<cr>", desc = "Navbuddy" },
-        },
-      },
-      -- { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-      -- { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      { "hrsh7th/cmp-nvim-lsp" },
+      "hrsh7th/cmp-nvim-lsp",
+      --
+      "folke/neodev.nvim",
+      { "j-hui/fidget.nvim", tag = "legacy" },
     },
-    ---@class PluginLspOpts
     opts = {
       -- options for vim.diagnostic.config()
       diagnostics = {
@@ -40,7 +28,6 @@ return {
         timeout_ms = nil,
       },
       -- LSP Server Settings
-      ---@type lspconfig.options
       servers = {
         bashls = {},
         diagnosticls = {},
@@ -57,9 +44,11 @@ return {
           },
         },
         lua_ls = {
-          -- mason = false, -- set to false if you don't want this server to be installed with mason
           settings = {
             Lua = {
+              diagnostics = {
+                globals = { "vim" },
+              },
               workspace = {
                 checkThirdParty = false,
               },
@@ -73,7 +62,6 @@ return {
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
-      ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
       setup = {
         -- example to setup with typescript.nvim
         -- tsserver = function(_, opts)
@@ -84,15 +72,13 @@ return {
         -- ["*"] = function(server, opts) end,
       },
     },
-    ---@param opts PluginLspOpts
-    config = function(plugin, opts)
+    config = function(_, opts)
       -- setup autoformat
       require("plugins.lsp.format").autoformat = opts.autoformat
       -- setup formatting and keymaps
       require("util").on_attach(function(client, buffer)
         require("plugins.lsp.format").on_attach(client, buffer)
         require("plugins.lsp.keymaps").on_attach(client, buffer)
-        -- require("nvim-navbuddy").attach(client, buffer)
       end)
 
       vim.diagnostic.config(opts.diagnostics)
@@ -148,19 +134,15 @@ return {
     opts = function()
       local b = require("null-ls").builtins
       return {
+        border = "rounded",
         debug = false,
         sources = {
-          -- b.formatting.prettierd,
-          -- b.formatting.markdownlint,
-          -- b.diagnostics.sqlfluff.with({
-          --   extra_args = { "--dialect", "postgres" }, -- change to your dialect
-          -- }),
+          b.formatting.markdownlint,
 
           -- Lua
           b.formatting.stylua,
 
           -- Shell
-          -- b.formatting.shfmt,
           b.formatting.shfmt.with({
             extra_args = { "-i", "2", "-ci" },
           }),
@@ -171,6 +153,8 @@ return {
           b.diagnostics.flake8,
           b.diagnostics.mypy,
           b.formatting.black,
+
+          b.code_actions.gitsigns,
         },
       }
     end,
@@ -197,9 +181,11 @@ return {
         "shfmt",
         "stylua",
       },
+      ui = {
+        border = "rounded",
+      },
     },
-    ---@param opts MasonSettings | {ensure_installed: string[]}
-    config = function(plugin, opts)
+    config = function(_, opts)
       require("mason").setup(opts)
       local mr = require("mason-registry")
       for _, tool in ipairs(opts.ensure_installed) do
@@ -209,5 +195,19 @@ return {
         end
       end
     end,
+  },
+  {
+    "nvimdev/lspsaga.nvim",
+    event = "LspAttach",
+    dependencies = { { "nvim-tree/nvim-web-devicons" } },
+    opts = {
+      -- Disable code action lightbulb
+      lightbulb = {
+        enable = false,
+      },
+      outline = {
+        win_position = "left",
+      },
+    },
   },
 }

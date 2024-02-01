@@ -1,9 +1,7 @@
 local M = {}
 
----@type PluginLspKeys
 M._keys = nil
 
----@return (LazyKeys|{has?:string})[]
 function M.get()
   local format = require("plugins.lsp.format").format
   ---@class PluginLspKeys
@@ -35,7 +33,7 @@ end
 
 function M.on_attach(client, buffer)
   local Keys = require("lazy.core.handler.keys")
-  local keymaps = {} ---@type table<string,LazyKeys|{has?:string}>
+  local keymaps = {}
 
   for _, value in ipairs(M.get()) do
     local keys = Keys.parse(value)

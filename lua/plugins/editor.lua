@@ -541,18 +541,14 @@ return {
     },
   },
   {
-    "nvimdev/lspsaga.nvim",
-    event = "LspAttach",
-    dependencies = { { "nvim-tree/nvim-web-devicons" } },
-    opts = {
-      -- Disable code action lightbulb
-      lightbulb = {
-        enable = false,
-      },
-      outline = {
-        win_position = "left",
-      },
+    "SmiteshP/nvim-navbuddy",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "MunifTanjim/nui.nvim",
     },
-    -- config = true,
+    opts = { lsp = { auto_attach = true } },
+    keys = {
+      { "<leader>nb", "<cmd>Navbuddy<cr>", desc = "Navbuddy" },
+    },
   },
 }
