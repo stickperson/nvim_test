@@ -185,6 +185,7 @@ return {
     opts = {
       ensure_installed = {
         "autopep8",
+        "beautysh",
         "black",
         "debugpy",
         "flake8",
