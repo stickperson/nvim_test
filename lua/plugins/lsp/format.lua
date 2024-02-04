@@ -21,6 +21,8 @@ function M.format()
   vim.lsp.buf.format(vim.tbl_deep_extend("force", {
     bufnr = buf,
     filter = function(client)
+      -- We could have an LSP and separate formatter for the same language
+      -- via null-ls. Use null-ls for formatting if possible.
       if have_nls then
         return client.name == "null-ls"
       end

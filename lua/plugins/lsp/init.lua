@@ -9,6 +9,12 @@ return {
       --
       "folke/neodev.nvim",
       { "j-hui/fidget.nvim", tag = "legacy" },
+
+      -- lsp symbol navigation for lualine
+      {
+        "SmiteshP/nvim-navic",
+        opts = { highlight = true, depth_limit = 5 },
+      },
     },
     opts = {
       -- options for vim.diagnostic.config()
@@ -76,7 +82,7 @@ return {
       -- setup autoformat
       require("plugins.lsp.format").autoformat = opts.autoformat
       -- setup formatting and keymaps
-      require("util").on_attach(function(client, buffer)
+      require("plugins.lsp.util").on_attach(function(client, buffer)
         require("plugins.lsp.format").on_attach(client, buffer)
         require("plugins.lsp.keymaps").on_attach(client, buffer)
       end)
@@ -138,30 +144,35 @@ return {
         border = "rounded",
         debug = false,
         sources = {
-          b.formatting.markdownlint,
+          -- General
+          b.completion.spell,
+
+          -- Git
+          b.code_actions.gitsigns,
 
           -- Lua
           b.formatting.stylua,
 
-          -- Shell
-          b.formatting.shfmt.with({
-            extra_args = { "-i", "2", "-ci" },
-          }),
-          b.formatting.beautysh,
-          b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
+          -- Markdown
+          b.code_actions.proselint,
+          -- Better diagnostics that proselint
+          b.diagnostics.write_good,
+          b.formatting.markdownlint,
 
           -- Python
           b.diagnostics.flake8,
           b.diagnostics.mypy,
           b.formatting.black,
 
-          b.code_actions.gitsigns,
+          -- Shell
+          b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
+          b.formatting.beautysh,
+          b.formatting.shfmt.with({
+            extra_args = { "-i", "2", "-ci" },
+          }),
 
-          -- Prose
-          b.code_actions.proselint,
-          -- Better diagnostics that proselint
-          b.diagnostics.write_good,
-          b.completion.spell,
+          -- Terraform
+          b.formatting.terraform_fmt,
         },
       }
     end,
