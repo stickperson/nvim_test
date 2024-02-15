@@ -49,11 +49,7 @@ return {
           },
         },
         ["core.defaults"] = {},
-        ["core.concealer"] = {
-          config = {
-            icon_preset = "diamond",
-          },
-        }, -- Adds pretty icons to your documents
+        ["core.concealer"] = {}, -- Adds pretty icons to your documents
         ["core.dirman"] = { -- Manages Neorg workspaces
           config = {
             default_workspace = "notes",

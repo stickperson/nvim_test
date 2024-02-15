@@ -65,6 +65,7 @@ return {
             },
           },
         },
+        tsserver = {},
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
@@ -157,6 +158,7 @@ return {
           b.code_actions.proselint,
           -- Better diagnostics that proselint
           b.diagnostics.write_good,
+          b.completion.spell,
           b.formatting.markdownlint,
 
           -- Python
