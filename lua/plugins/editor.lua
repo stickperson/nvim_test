@@ -551,4 +551,18 @@ return {
       { "<leader>nb", "<cmd>Navbuddy<cr>", desc = "Navbuddy" },
     },
   },
+  {
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    lazy = "VeryLazy",
+    keys = {
+      { "<leader>lf", "<cmd>FzfLua files<cr>" },
+    },
+    -- config = true,
+    -- config = function()
+    --   -- calling `setup` is optional for customization
+    --   require("fzf-lua").setup({})
+    -- end,
+  },
 }
