@@ -160,15 +160,13 @@ return {
           b.diagnostics.write_good,
           b.completion.spell,
           b.formatting.markdownlint,
+          b.formatting.sqlfmt,
 
           -- Python
-          b.diagnostics.flake8,
           b.diagnostics.mypy,
           b.formatting.black,
 
           -- Shell
-          b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
-          b.formatting.beautysh,
           b.formatting.shfmt.with({
             extra_args = { "-i", "2", "-ci" },
           }),
