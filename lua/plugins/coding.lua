@@ -90,7 +90,7 @@ return {
           end,
         },
         mapping = {
-          ["<C-p>"] = cmp.mapping.select_prev_item(),
+          -- ["<C-p>"] = cmp.mapping.select_prev_item(),
           ["<C-n>"] = cmp.mapping.select_next_item(),
           ["<C-d>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -195,5 +195,16 @@ return {
         mode = "v",
       },
     },
+  },
+  {
+    "github/copilot.vim",
+    lazy = false,
+    config = function()
+      vim.keymap.set("i", "<C-p>", 'copilot#Accept("\\<CR>")', {
+        expr = true,
+        replace_keycodes = false,
+      })
+      vim.g.copilot_no_tab_map = true
+    end,
   },
 }

@@ -21,6 +21,7 @@ return {
       ensure_installed = {
         "bash",
         -- "diagnosticsls",
+        "hcl",
         "help",
         "javascript",
         "json",

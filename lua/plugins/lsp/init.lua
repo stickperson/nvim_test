@@ -173,6 +173,7 @@ return {
 
           -- Terraform
           b.formatting.terraform_fmt,
+          b.formatting.hclfmt,
         },
       }
     end,
@@ -193,6 +194,7 @@ return {
         "flake8",
         "gopls",
         "hadolint",
+        "hclfmt",
         "markdownlint",
         "mypy",
         "proselint",
