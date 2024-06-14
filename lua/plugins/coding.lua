@@ -11,6 +11,8 @@ local function border(hl_name)
   }
 end
 
+local setup_exists, config = pcall(require, "config.setup")
+
 return {
 
   -- snippets
@@ -121,6 +123,9 @@ return {
           { name = "nvim_lua" },
           { name = "path" },
         },
+        experimental = {
+          ghost_text = true,
+        },
       }
     end,
   },
@@ -199,6 +204,9 @@ return {
   {
     "github/copilot.vim",
     lazy = false,
+    cond = function()
+      return setup_exists and config.enable_copilot
+    end,
     config = function()
       vim.keymap.set("i", "<C-p>", 'copilot#Accept("\\<CR>")', {
         expr = true,

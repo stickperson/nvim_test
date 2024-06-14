@@ -3,7 +3,21 @@ return {
   {
     "folke/persistence.nvim",
     event = "BufReadPre",
-    opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help" } },
+    -- opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help" } },
+    opts = {
+      options = {
+        "blank",
+        "buffers",
+        "curdir",
+        "folds",
+        "help",
+        "tabpages",
+        "winsize",
+        "winpos",
+        "terminal",
+        "localoptions",
+      },
+    },
     -- stylua: ignore
     keys = {
       { "<leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
